@@ -1,0 +1,8 @@
+<div class="container">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="report"></mat-icon>
+    <p>Are you sure you want to delete the user {{ data.firstName }} {{ data.lastName }}?</p>
+</div>
+<div class="actions">
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button [mat-dialog-close]="true">Confirm</button>
+</div>
