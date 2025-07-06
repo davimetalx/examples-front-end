@@ -46,11 +46,15 @@ export class ListUsersComponent implements OnInit {
 
   createUser(): void {
     const dialogRef = this.dialog.open(ModalCreateUsersComponent, {
-      
+      height: '500px',
+      width: '600px',
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      if (result) {
+        console.log('Usuário criado:', result);
+      }
     });
   }
 

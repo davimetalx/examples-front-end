@@ -1,1 +1,49 @@
-<p>modal-create-users works!</p>
+<form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="firstName">First Name</label>
+    <input id="firstName" formControlName="firstName" />
+    <div class="field-required" *ngIf="formUser.get('firstName')?.invalid">
+      First name is required.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="lastName">Last Name</label>
+    <input id="lastName" formControlName="lastName" />
+    <div class="field-required" *ngIf="formUser.get('lastName')?.invalid">
+      Last name is required.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="username">Username</label>
+    <input id="username" formControlName="username" />
+    <div class="field-required" *ngIf="formUser.get('username')?.invalid">
+      Username is required.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" />
+    <div class="field-required" *ngIf="formUser.get('email')?.invalid">
+      Valid email is required.
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone</label>
+    <input id="phone" formControlName="phone" />
+    <div class="field-required" *ngIf="formUser.get('phone')?.invalid">
+      Phone is required.
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="button" (click)="onClear()">Clear</button>
+    <div>
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="submit" [disabled]="!formUser.valid">Save</button>
+    </div>
+  </div>
+</form>
