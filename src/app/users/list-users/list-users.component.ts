@@ -58,13 +58,18 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
-  editUser(): void {
+  editUser(user: User): void {
     const dialogRef = this.dialog.open(ModalEditUsersComponent, {
-      
+      height: '500px',
+      width: '600px',
+      data: user,
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      if (result) {
+        console.log('Usuário criado:', result);
+      }
     });
   }
 

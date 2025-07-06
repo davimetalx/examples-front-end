@@ -1,0 +1,22 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    .field-required {
+        color: red;
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-left: 10px;
+    button:last-child {
+        margin-left: 10px;
+    }
+}

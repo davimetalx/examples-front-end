@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../service/user.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-detail-users',
@@ -11,6 +12,8 @@ export class DetailUsersComponent implements OnInit {
 
   id: string | null = null;
 
+  user!: User;
+
   constructor(
     private activatedroute:ActivatedRoute,
     private userService: UserService
@@ -20,7 +23,7 @@ export class DetailUsersComponent implements OnInit {
     this.id = this.activatedroute.snapshot.paramMap.get("id");
     if (this.id) {
       this.userService.getUser(parseInt(this.id)).subscribe(user => {
-        console.log(user);
+        this.user = user;
       });
     }
   }
