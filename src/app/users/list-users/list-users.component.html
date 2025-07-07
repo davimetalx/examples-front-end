@@ -8,8 +8,10 @@
       Create User
     </button>
   </div>
+
   <div class="mat-elevation-z8" style="margin-left: 10px; margin-right: 10px;">
-    <table mat-table [dataSource]="users" class="mat-table" aria-label="Tabela de usuários">
+
+    <table *ngIf="users.length > 0" mat-table [dataSource]="users" class="mat-table" aria-label="Tabela de usuários">
 
       <!-- Full Name Column -->
       <ng-container matColumnDef="fullName">
@@ -54,5 +56,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <div *ngIf="users.length === 0" style="text-align: center; padding: 16px; font-style: italic; color: gray;">
+      Users not found!
+    </div>
+
   </div>
 </mat-card>
