@@ -6,6 +6,7 @@ import { ModalCreateUsersComponent } from '../shared/modal-create-users/modal-cr
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEditUsersComponent } from '../shared/modal-edit-users/modal-edit-users.component';
 import { ModalDeleteUsersComponent } from '../shared/modal-delete-users/modal-delete-users.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-users',
@@ -17,7 +18,8 @@ export class ListUsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   users: User[] = [];
@@ -53,7 +55,14 @@ export class ListUsersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('Usuário criado:', result);
+        this.userService.createUser(result).subscribe(() => {
+          this.getUsers();
+          this.snackBar.open('User created with success!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
+        });
       }
     });
   }
@@ -68,7 +77,14 @@ export class ListUsersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('Usuário criado:', result);
+        this.userService.updateUser(user.id, result).subscribe(() => {
+          this.getUsers();
+          this.snackBar.open('User updated with success!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
+        });
       }
     });
   }
@@ -82,7 +98,14 @@ export class ListUsersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(user);
+        this.userService.deleteUser(user.id).subscribe(() => {
+          this.getUsers();
+          this.snackBar.open('User delete with success!', 'Close', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
+        });
       }
     });
   }

@@ -35,7 +35,6 @@ export class ModalCreateUsersComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.formUser.valid) {
-      console.log('Form Submitted', this.formUser.value);
       this.dialogRef.close(this.formUser.value);
     } else {
       console.log('Form is invalid');

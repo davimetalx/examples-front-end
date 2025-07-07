@@ -11,6 +11,7 @@ import { ModalCreateUsersComponent } from './shared/modal-create-users/modal-cre
 import { ModalEditUsersComponent } from './shared/modal-edit-users/modal-edit-users.component';
 import { ModalDeleteUsersComponent } from './shared/modal-delete-users/modal-delete-users.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   exports: [
     ListUsersComponent
